@@ -135,19 +135,15 @@ roxdat <- function(dat, name, file = "", append = FALSE) {
 is.enviroment <- function(x) class(x) == "environment"
 
 what <- function(x) {
-    if (is.data.frame(x)) {
-        return("data frame")
-    }
-    if (is.list(x) & !is.data.frame(x)) {
-        return("list")
-    }
-    if (class(x) == "character") {
-        return("character vector")
-    }
-    if (is.vector(x)) {
-        return("vector")
-    }
-    if (is.environment(x)) {
-        return("environment")
+    what <- function(x) {
+        if (is.data.frame(x)) {
+            return ("data frame")
+        } else if (is.list(x)) {
+            return ("list")
+        } else if (class(x) == "character") {
+            return ("character vector")
+        } else if (is.environment(x)) {
+            return ("environment")
+        } else return ("vector")
     }
 }
